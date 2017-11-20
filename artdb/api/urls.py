@@ -11,11 +11,11 @@ from artdb.api.views import (
 
 urlpatterns = [
     url(r'^artist/$', ArtistAPIView.as_view(), name="artist"),
-    url(r'^artist/(?P<pk>\d+)/$', ArtistDetailAPIView.as_view(), name="artist-detail"),
+    url(r'^/artist/(?P<pk>\d+)/$', ArtistDetailAPIView.as_view(), name="artist-detail"),
 
     url(r'^artwork/$', ArtworkAPIView.as_view(), name="artwork"),
-    url(r'^artwork/(?P<pk>\d+)/$', ArtworkDetailAPIView.as_view(), name="artwork-detail"),
+    url(r'^/artwork/(?P<pk>\d+)/$', ArtworkDetailAPIView.as_view(), name="artwork-detail"),
 
     url(r'^price/$', PriceHistoryAPIView.as_view(), name="price"),
-    url(r'^price/(?P<pk>\d+)/$', PriceHistoryDetailAPIView.as_view(), name="price-detail"),
+    url(r'^/price/(?P<pk>\d+)/$', PriceHistoryDetailAPIView.as_view(), name="price-detail"),
 ]
