@@ -39,4 +39,15 @@ class Artwork(models.Model):
 
 
 class PriceHistory(models.Model):
-    pass
+    artwork = models.ForeignKey(Artwork,
+                                on_delete=models.CASCADE,
+                                related_name='price_history')
+    date = models.CharField(max_length=8)
+    begin = models.IntegerField(blank=True, null=True)
+    estimate_low = models.IntegerField(blank=True, null=True)
+    estimate_high = models.IntegerField(blank=True, null=True)
+    hammer = models.IntegerField(blank=True, null=True)
+    sold = models.BooleanField(blank=True, null=True)
+
+    def __str__(self):
+        return self.artwork.title
