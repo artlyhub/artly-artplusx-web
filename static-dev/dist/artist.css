@@ -1,0 +1,11 @@
+.ui.vertical.segment {
+  margin-top: 0;
+  margin-bottom: 0;
+  border-radius: 0px;
+  border-bottom: solid 0px white;
+  min-height: 20em;
+}
+
+.ui.header.intro {
+  margin-top: 3.7em;
+}

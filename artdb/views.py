@@ -1,16 +1,13 @@
 from django.db.models import Q
 from django.views import View
-from django.shortcuts import render
+from django.views.generic import ListView
+from django.shortcuts import redirect, render
 
 from artdb.models import Artist
 
 
-def home(request):
-    return render(request, 'home.html', {})
-
-
 class ArtistListView(ListView):
-    template_name = 'artist_list.html'
+    template_name = 'home.html'
     queryset = Artist.objects.all()
 
     def get_queryset(self, *args, **kwargs):
@@ -20,4 +17,14 @@ class ArtistListView(ListView):
             qs = qs.filter(
                 Q(name__icontains=query)
             )
-        return qs
+            return render(self.request,
+                          'artist_list.html',
+                          {'artist': qs})
+        else:
+            return render(self.request,
+                          'home.html',
+                          {})
+
+
+def temp_page():
+    pass

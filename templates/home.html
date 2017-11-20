@@ -3,19 +3,41 @@
 {% load static %}
 {% load thumbnail %}
 
+{% block css %}
+  <link href="{% static 'home.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block javascript %}
   <script src="{% static 'home.js' %}"></script>
   <script src="{% static 'masonry.pkgd.min.js' %}"></script>
+{% endblock %}
+
+{% block banner %}
+  <div class="ui vertical center aligned segment">
+    <div class="container">
+      <div class="ui large secondary menu">
+        <div class="right item">
+          <a class="ui grey basic button">로그인</a>
+          <a class="ui grey basic button">회원가입</a>
+        </div>
+      </div>
+      <div class="ui text container">
+        <h1 class="ui header intro">아틀리(Artly): 미술 정보 검색 서비스</h1>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block content %}
 <div class="ui search grid">
   <div class="four wide column"></div>
   <div class="eight wide column">
-    <div class="ui big fluid action input">
-      <input type="text" placeholder="미술작가를 검색해보세요...">
-      <div class="ui red button">검색</div>
-    </div>
+    <form class="search-form" action="{% url 'artist' %}" method="get">
+      <div class="ui big fluid action input">
+        <input type="text" name="q" placeholder="미술작가를 검색해보세요...">
+        <div class="ui red button" type="submit">검색</div>
+      </div>
+    </form>
   </div>
   <div class="four wide column"></div>
 </div>

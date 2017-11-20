@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load thumbnail %}
+
+{% block css %}
+  <link href="{% static 'artist.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block banner %}
+  <div class="ui vertical center aligned segment">
+    <div class="container">
+      <div class="ui text container">
+        <h1 class="ui header intro">작가 이름</h1>
+      </div>
+    </div>
+  </div>
+{% endblock %}
