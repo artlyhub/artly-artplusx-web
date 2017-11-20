@@ -4,36 +4,19 @@
 {% load thumbnail %}
 
 {% block javascript %}
-  <script src="{% static 'basic-upload.js' %}"></script>
+  <script src="{% static 'home.js' %}"></script>
   <script src="{% static 'masonry.pkgd.min.js' %}"></script>
 {% endblock %}
 
 {% block content %}
-  <div class="ui grid">
-    <div class="two wide column"></div>
-    <div class="twelve wide column">
-      <div class="masonry-grid">
-        <div class="ui link cards">
-          {% for archive in archives %}
-            <div class="grid-item">
-              <div class="ui card">
-                <a class="image" href="{{ archive.image.url }}">
-                  {% thumbnail archive.image "200" as im %}
-                    <img src="{{ im.url }}">
-                  {% endthumbnail %}
-                </a>
-                <div class="content">
-                  <a class="header" href="#">{{ archive.title }}</a>
-                  <div class="meta">
-                    <a>{{ archive.description }}</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-      </div>
+<div class="ui search grid">
+  <div class="four wide column"></div>
+  <div class="eight wide column">
+    <div class="ui big fluid action input">
+      <input type="text" placeholder="미술작가를 검색해보세요...">
+      <div class="ui red button">검색</div>
     </div>
-    <div class="two wide column"></div>
   </div>
+  <div class="four wide column"></div>
+</div>
 {% endblock %}

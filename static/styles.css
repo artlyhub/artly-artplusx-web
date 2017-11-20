@@ -1,0 +1,54 @@
+html, body {
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+.navbar {
+  color: black;
+  font-size: 2rem;
+  padding: 1.0rem;
+  text-align: center;
+  font-weight: 600;
+  border-bottom: solid 3px black;
+  background-color: white;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.ui.vertical.segment {
+  margin-top: 0;
+  margin-bottom: 0;
+  border-radius: 0px;
+  border-bottom: solid 0px white;
+  min-height: 30em;
+}
+
+.ui.header.intro {
+  margin-top: 5em;
+}
+
+.ui.search.segment {
+  margin-top: 0;
+  border-radius: 0;
+}
+
+.ui.search.grid {
+  margin-top: 7em;
+}
+
+.grid-item {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
