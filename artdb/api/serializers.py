@@ -12,6 +12,7 @@ class ArtistSerializer(serializers.ModelSerializer):
         model = Artist
         fields = ('id',
                   'name',
+                  'profile_img',
                   'bod',
                   'description',)
 

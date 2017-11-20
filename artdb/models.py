@@ -6,9 +6,14 @@ def scramble_uploaded_image(instance, filename):
     extension = filename.split(".")[-1]
     return "artwork/{}.{}".format(uuid.uuid4(), extension)
 
+def scramble_profile_image(instance, filename):
+    extension = filename.split(".")[-1]
+    return "profile/{}.{}".format(uuid.uuid4(), extension)
+
 
 class Artist(models.Model):
     name = models.CharField(max_length=255)
+    profile_img = models.ImageField(upload_to=scramble_profile_image)
     bod = models.CharField(max_length=8,
                            blank=True,
                            null=True)
