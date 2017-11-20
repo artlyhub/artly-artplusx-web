@@ -47,7 +47,7 @@ class PriceHistory(models.Model):
     estimate_low = models.IntegerField(blank=True, null=True)
     estimate_high = models.IntegerField(blank=True, null=True)
     hammer = models.IntegerField(blank=True, null=True)
-    sold = models.BooleanField(blank=True, null=True)
+    sold = models.BooleanField()
 
     def __str__(self):
         return self.artwork.title
