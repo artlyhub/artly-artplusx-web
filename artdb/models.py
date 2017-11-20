@@ -13,7 +13,9 @@ def scramble_profile_image(instance, filename):
 
 class Artist(models.Model):
     name = models.CharField(max_length=255)
-    profile_img = models.ImageField(upload_to=scramble_profile_image)
+    profile_img = models.ImageField(upload_to=scramble_profile_image,
+                                    blank=True,
+                                    null=True)
     bod = models.CharField(max_length=8,
                            blank=True,
                            null=True)
