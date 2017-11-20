@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load thumbnail %}
+
+{% block javascript %}
+  <script src="{% static 'basic-upload.js' %}"></script>
+  <script src="{% static 'masonry.pkgd.min.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+  <div class="ui grid">
+    <div class="two wide column"></div>
+    <div class="twelve wide column">
+      <div class="masonry-grid">
+        <div class="ui link cards">
+          {% for archive in archives %}
+            <div class="grid-item">
+              <div class="ui card">
+                <a class="image" href="{{ archive.image.url }}">
+                  {% thumbnail archive.image "200" as im %}
+                    <img src="{{ im.url }}">
+                  {% endthumbnail %}
+                </a>
+                <div class="content">
+                  <a class="header" href="#">{{ archive.title }}</a>
+                  <div class="meta">
+                    <a>{{ archive.description }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="two wide column"></div>
+  </div>
+{% endblock %}
