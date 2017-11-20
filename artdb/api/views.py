@@ -19,7 +19,7 @@ class ArtistAPIView(generics.ListCreateAPIView):
 
 class ArtistDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Artist.objects.get_queryset()
-    serializer_class = ArtworkSerializer
+    serializer_class = ArtistSerializer
 
 
 class ArtworkAPIView(generics.ListCreateAPIView):
@@ -29,7 +29,7 @@ class ArtworkAPIView(generics.ListCreateAPIView):
 
 class ArtworkDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Artwork.objects.get_queryset()
-    serializer_class = ArtistSerializer
+    serializer_class = ArtworkSerializer
 
 
 class PriceHistoryAPIView(generics.ListCreateAPIView):
