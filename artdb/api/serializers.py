@@ -9,5 +9,4 @@ class ArtistSerializer(serializers.ModelSerializer):
         fields = ('id',
                   'name',
                   'bod',
-                  'description',
-                  'created')
+                  'description',)
