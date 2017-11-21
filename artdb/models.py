@@ -4,16 +4,12 @@ from django.db import models
 
 def scramble_uploaded_image(instance, filename):
     extension = filename.split(".")[-1]
-    return "artwork/{}.{}".format(uuid.uuid4(), extension)
-
-def scramble_profile_image(instance, filename):
-    extension = filename.split(".")[-1]
-    return "profile/{}.{}".format(uuid.uuid4(), extension)
+    return "{}.{}".format(uuid.uuid4(), extension)
 
 
 class Artist(models.Model):
     name = models.CharField(max_length=255)
-    profile_img = models.ImageField(upload_to=scramble_profile_image,
+    profile_img = models.ImageField(upload_to=scramble_uploaded_image,
                                     blank=True,
                                     null=True)
     bod = models.CharField(max_length=8,
