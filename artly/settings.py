@@ -145,6 +145,7 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = '/home/artly/artly.kr/media/'
 
 FILE_UPLOAD_MAX_MEMORY_SIZE = 200000000
