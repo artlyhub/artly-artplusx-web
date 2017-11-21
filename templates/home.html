@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block banner %}
-  <div class="ui vertical center aligned segment">
+  <div id="home-banner" class="ui vertical center aligned segment">
     <div class="container">
       <div class="ui large secondary menu">
         <div class="right item">
@@ -26,10 +26,18 @@
       </div>
     </div>
   </div>
+
+  <div id="artist-banner" class="ui vertical center aligned segment">
+    <div class="container">
+      <div class="ui text container">
+        <h1 class="ui header intro">작가 이름</h1>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block content %}
-<div class="ui search grid">
+<div id="search-div" class="ui search grid">
   <div class="four wide column"></div>
   <div class="eight wide column">
     <form class="search-form" action="{% url 'artist' %}" method="get">

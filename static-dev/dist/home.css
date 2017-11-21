@@ -1,4 +1,4 @@
-.ui.vertical.segment {
+#home-banner {
   margin-top: 0;
   margin-bottom: 0;
   border-radius: 0px;
@@ -6,17 +6,29 @@
   min-height: 28em;
 }
 
-.ui.header.intro {
+#home-banner .ui.header.intro {
   margin-top: 5em;
 }
 
-.ui.search.segment {
+#artist-banner {
   margin-top: 0;
-  border-radius: 0;
+  margin-bottom: 0;
+  border-radius: 0px;
+  border-bottom: solid 0px white;
+  min-height: 20em;
 }
 
-.ui.search.grid {
+#artist-banner .ui.header.intro {
+  margin-top: 3.7em;
+}
+
+#search-div {
   margin-top: 7em;
+}
+
+#search-div .ui.search.segment {
+  margin-top: 0;
+  border-radius: 0;
 }
 
 .ui.form {
