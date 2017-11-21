@@ -41,4 +41,8 @@
   </div>
   <div class="four wide column"></div>
 </div>
+
+{% for artist in artist_list %}
+  <h1>{{ artist.name }}</h1>
+{% endfor %}
 {% endblock %}

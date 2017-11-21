@@ -11,20 +11,15 @@ class ArtistListView(ListView):
     queryset = Artist.objects.all()
 
     def get_queryset(self, *args, **kwargs):
-        qs = Artist.objects.all()
+        qs = super(ArtistListView, self).get_queryset()
+
         query = self.request.GET.get('q', None)
         if query is not None:
             qs = qs.filter(
                 Q(name__icontains=query)
             )
-            return render(self.request,
-                          'artist_list.html',
-                          {'artist': qs})
-        else:
-            return render(self.request,
-                          'home.html',
-                          {})
-
+            if qs.exists():
+                return qs
 
 def temp_page():
     pass
