@@ -47,14 +47,14 @@ $(document).ready(function() {
 //     }
 //   })
 // }
-//
-// // on click button submit form
-// $('.red.search.icon').click(function(e) {
-//   var artist = $('input[name=q]').val()
-//   var search_url = '/api/search/artist/?q=' + artist
-//   search_artist_api(search_url)
-// })
-//
+
+// on click button submit form
+$('.red.search.icon').click(function(e) {
+  var artist = $('input[name=q]').val()
+  var reverse_url = '/?q=' + artist
+  location.href = reverse_url
+})
+
 // // on enter/submit form send api request
 // $('.search-form').on('submit', function(e) {
 //   e.preventDefault()
