@@ -12,7 +12,7 @@ class Artist(models.Model):
     profile_img = models.ImageField(upload_to=scramble_uploaded_image,
                                     blank=True,
                                     null=True)
-    bod = models.CharField(max_length=8,
+    bod = models.CharField(max_length=50,
                            blank=True,
                            null=True)
     description = models.TextField(blank=True, null=True)
@@ -33,7 +33,7 @@ class Artwork(models.Model):
     style = models.CharField(max_length=100,
                              blank=True,
                              null=True)
-    created = models.CharField(max_length=20,
+    created = models.CharField(max_length=50,
                                blank=True,
                                null=True)
 
@@ -45,7 +45,9 @@ class PriceHistory(models.Model):
     artwork = models.ForeignKey(Artwork,
                                 on_delete=models.CASCADE,
                                 related_name='price_history')
-    date = models.CharField(max_length=8)
+    date = models.CharField(max_length=50,
+                            blank=True,
+                            null=True)
     begin = models.IntegerField(blank=True, null=True)
     estimate_low = models.IntegerField(blank=True, null=True)
     estimate_high = models.IntegerField(blank=True, null=True)
