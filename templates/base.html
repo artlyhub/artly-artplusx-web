@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}아틀리{% endblock %}</title>
     <link href="{% static 'semantic.min.css' %}" rel="stylesheet">
-    <link href="{% static 'icon.min.css' %}" rel="stylesheet">
     <link href="{% static 'styles.css' %}" rel="stylesheet">
     {% block css %}
     {% endblock %}
@@ -25,7 +24,7 @@
       {% block content %}
       {% endblock %}
     </div>
-    {% include 'footer.html' %}
+    <!-- {% include 'footer.html' %} -->
 
     <script src="{% static 'jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'semantic.min.js' %}"></script>

@@ -13,44 +13,117 @@
 {% endblock %}
 
 {% block banner %}
-  <div id="home-banner" class="ui vertical center aligned segment">
-    <div class="container">
-      <div class="ui large secondary menu">
-        <div class="right item">
-          <a class="ui grey basic button">로그인</a>
-          <a class="ui grey basic button">회원가입</a>
+  {% if artists == None and artist == None %}
+    <div id="home-banner" class="ui vertical center aligned segment">
+      <div class="container">
+        <div class="ui large secondary menu">
+          <div class="right item">
+            <a class="ui inverted yellow basic button">로그인</a>
+            <a class="ui inverted yellow basic button">회원가입</a>
+          </div>
+        </div>
+        <div class="ui text container">
+          <h1 class="ui header intro">아틀리(Artly): 미술 정보 검색 서비스</h1>
         </div>
       </div>
-      <div class="ui text container">
-        <h1 class="ui header intro">아틀리(Artly): 미술 정보 검색 서비스</h1>
-      </div>
     </div>
-  </div>
+  {% endif %}
 
-  <div id="artist-banner" class="ui vertical center aligned segment">
-    <div class="container">
-      <div class="ui text container">
-        <h1 class="ui header intro">작가 이름</h1>
+  {% if artist %}
+    {% for person in artist %}
+      <div id="artist-banner" class="ui vertical center aligned segment">
+        <div class="container">
+          <div class="ui text container">
+            <a class="image" href="{{ person.profile_img.url }}">
+              {% thumbnail person.profile_img "150x150" crop="center" as im %}
+                <img id="artist-img" class="ui small circular image" src="{{ im.url }}">
+              {% endthumbnail %}
+            </a>
+            <h1 id="artist-name" class="ui header intro">{{ person.name }}</h1>
+            <h2 id="artist-description">{{ person.description }}</h2>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  {% if artists %}
+    <div id="artists-banner" class="ui vertical center aligned segment">
+      <div class="container">
+        <div class="ui text container">
+          <h1 class="ui header intro">무슨 작가의 정보가 궁금하세요?</h1>
+        </div>
       </div>
     </div>
-  </div>
+  {% endif %}
 {% endblock %}
 
 {% block content %}
-<div id="search-div" class="ui search grid">
-  <div class="four wide column"></div>
-  <div class="eight wide column">
-    <form class="search-form" action="{% url 'artist' %}" method="get">
-      <div class="ui big fluid action input">
-        <input type="text" name="q" placeholder="미술작가를 검색해보세요...">
-        <div class="ui red button" type="submit">검색</div>
+  {% if artists == None and artist == None%}
+    <div id="search-div" class="ui search grid">
+      <div class="four wide column"></div>
+      <div class="eight wide column">
+        <form class="search-form" action="{% url 'artist' %}" method="get">
+          <div class="ui big fluid icon input">
+            <input type="text" name="q" placeholder="미술작가를 검색해보세요...">
+            <i class="red inverted circular search link icon"></i>
+          </div>
+        </form>
       </div>
-    </form>
-  </div>
-  <div class="four wide column"></div>
-</div>
+      <div class="four wide column"></div>
+    </div>
+  {% endif %}
 
-{% for artist in artist_list %}
-  <h1>{{ artist.name }}</h1>
-{% endfor %}
+  {% if artists %}
+    <div id="artists-list" class="ui grid">
+      <div class="four wide column"></div>
+      <div class="eight wide column">
+        <div class="ui big aligned selection list">
+          {% for artist in artists %}
+            <div id="artist-item" class="item" onclick="location.href='/{{ artist.id }}'">
+              {% thumbnail artist.profile_img "35x35" crop="center" as im %}
+                <img class="ui avatar image" src="{{ im.url }}">
+              {% endthumbnail %}
+              <div class="content">
+                <div class="header">{{ artist.name }}</div>
+                {{ artist.description }}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="four wide column"></div>
+    </div>
+  {% endif %}
+
+  {% if artist %}
+    <div id="gallery" class="ui grid">
+      <div class="two wide column"></div>
+      <div class="twelve wide column">
+        <div class="masonry-grid">
+          <div class="ui link cards">
+            {% for artwork in artworks %}
+              <div class="grid-item">
+                <div class="ui card">
+                  <a class="image" href="{{ artwork.image.url }}">
+                    {% thumbnail artwork.image "200" as im %}
+                      <img src="{{ im.url }}">
+                    {% endthumbnail %}
+                  </a>
+                  <div class="content">
+                    <a class="header" href="#">{{ artwork.title }}</a>
+                    <div class="meta">
+                      <a>{{ artwork.description }}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="two wide column"></div>
+    </div>
+  {% endif %}
+
 {% endblock %}
